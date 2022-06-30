@@ -49,7 +49,7 @@ document
 
 message.style.backgroundColor = "#37383d";
 message.style.height =
-  Number.parseFloat(getComputedStyle(message).height, 10) + 25 + "px";
+  Number.parseFloat(getComputedStyle(message).height, 10) + 12 + "px";
 
 //////////////////////////////////////////////////////////////////////////////////
 //implementing smooth scroll 'learn more' link
@@ -185,11 +185,11 @@ nav.addEventListener("mouseout", function (e) {
 //better Sticky header
 
 const navHeight = nav.getBoundingClientRect().height;
-console.log(navHeight);
+// console.log(navHeight);
 
 const stickynavFunc = function (entries) {
   const entry = entries[0]; //or   const [entry] = entries
-  console.log(entry);
+  // console.log(entry);
 
   if (!entry.isIntersecting) nav.classList.add("sticky");
   else nav.classList.remove("sticky");
@@ -202,3 +202,22 @@ const headerObserver = new IntersectionObserver(stickynavFunc, {
 });
 
 headerObserver.observe(header);
+
+//reveal sections
+const allSections = document.querySelectorAll(".section");
+const revealSection = function (entries, observer) {
+  const [entry] = entries;
+  console.log(entry);
+
+  // entry.target.classList.remove("section--hidden");
+};
+
+const sectionObserver = new IntersectionObserver(revealSection, {
+  root: null,
+  threshold: 0.15, //15% then will be visible
+});
+
+allSections.forEach(function (section) {
+  sectionObserver.observe(section);
+  section.classList.add("section--hidden");
+});
