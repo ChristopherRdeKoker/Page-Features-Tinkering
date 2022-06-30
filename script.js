@@ -223,3 +223,17 @@ allSections.forEach(function (section) {
   sectionObserver.observe(section);
   section.classList.add("section--hidden");
 });
+//////////////////////////////////////////////////
+const imgTargets = document.querySelectorAll("img[data-src]");
+console.log(imgTargets);
+
+const loadImgFunc = function (entries, observer) {
+  const [entry] = entries;
+  console.log(entry);
+};
+
+const imgObserver = new IntersectionObserver(loadImgFunc, {
+  root: null,
+  threshold: 0,
+});
+imgTargets.forEach((img) => imgObserver.observe(img));
