@@ -57,8 +57,8 @@ const btnScrollTo = document.querySelector(".btn--scroll-to");
 const section1 = document.querySelector("#section--1");
 btnScrollTo.addEventListener("click", function () {
   const s1coords = section1.getBoundingClientRect();
-  console.log(s1coords);
-  console.log("Current Scroll (X/Y)", window.pageXOffset, window.pageYOffset);
+  // console.log(s1coords);
+  // console.log("Current Scroll (X/Y)", window.pageXOffset, window.pageYOffset);
   //////////////scroll now
   // window.scrollTo(
   //   s1coords.left + window.pageXOffset,                       //old way
@@ -90,7 +90,7 @@ document.querySelector(".nav__links").addEventListener("click", function (e) {
 
   if (e.target.classList.contains("nav__link")) {
     const id = e.target.getAttribute("href");
-    console.log(id);
+    // console.log(id);
     document.querySelector(id).scrollIntoView({ behavior: "smooth" });
   }
 });
@@ -141,7 +141,7 @@ tabsContainer.addEventListener("click", function (e) {
   tabsContent.forEach((c) => c.classList.remove("operations__content--active"));
 
   //activate tab
-  console.log(clicked);
+  // console.log(clicked);
   clicked.classList.add("operations__tab--active");
   //add win
   document
