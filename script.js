@@ -248,9 +248,16 @@ imgTargets.forEach((img) => imgObserver.observe(img));
 const slides = document.querySelectorAll(".slide");
 const btnRight = document.querySelector(".slider__btn--right");
 const btnLeft = document.querySelector(".slider__btn--left");
+const dotContainer = document.querySelector(".dots");
 
 let currSlide = 0;
 const maxSlide = slides.length;
+
+// const createDots = function (e) {
+//   slides.forEach((_, i) => {
+//     dotContainer.insertAdjacentHTML("beforeend", ``);
+//   });
+// };
 
 const goToSlide = function (currSlide) {
   slides.forEach(
@@ -279,3 +286,9 @@ const prevSlide = function () {
 
 btnRight.addEventListener("click", nextSlide);
 btnLeft.addEventListener("click", prevSlide);
+
+document.addEventListener("keydown", function (e) {
+  //added keys move
+  if (e.key === "ArrowLeft") prevSlide();
+  e.key === "ArrowRight" && nextSlide();
+});
